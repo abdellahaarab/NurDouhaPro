@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
-import SacredArchitecture from '../assets/Sacred_Architecture.png';
-import IslamicCalligraphy from '../assets/Islamic_Calligraphy.png';
-import QuranPages from '../assets/Quran_Pages.png';
-import MosqueInterior from '../assets/Mosque_Interior.png';
-import GeometricPatterns from '../assets/Geometric_Patterns.png';
-import PrayerHall from '../assets/Prayer_Hall.png';
+import SacredArchitecture from '../../assets/Sacred_Architecture.png';
+import IslamicCalligraphy from '../../assets/Islamic_Calligraphy.png';
+import QuranPages from '../../assets/Quran_Pages.png';
+import MosqueInterior from '../../assets/Mosque_Interior.png';
+import GeometricPatterns from '../../assets/Geometric_Patterns.png';
+import PrayerHall from '../../assets/Prayer_Hall.png';
 
 const IMAGES = [
   {
