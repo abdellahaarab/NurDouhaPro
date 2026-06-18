@@ -42,11 +42,11 @@ export default function SearchBar({ onClose }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[60] flex items-start justify-center pt-20 px-4"
+      className="fixed inset-0 z-[60] flex items-start justify-center pt-24 px-4"
     >
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-dark/80 backdrop-blur-sm"
+        className="absolute inset-0 bg-dark/85 backdrop-blur-md"
         onClick={onClose}
       />
 
@@ -54,9 +54,10 @@ export default function SearchBar({ onClose }) {
         initial={{ opacity: 0, scale: 0.96, y: -20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.96, y: -20 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
         className="relative w-full max-w-xl"
       >
-        <div className="glass-card rounded-2xl overflow-hidden shadow-2xl">
+        <div className="glass-card-strong rounded-2xl overflow-hidden shadow-2xl border border-white/10">
           {/* Input */}
           <div className="flex items-center gap-3 px-4 py-4 border-b border-white/8">
             <Search size={18} className="text-white/40 flex-shrink-0" />
@@ -83,11 +84,11 @@ export default function SearchBar({ onClose }) {
                 <li key={surah.number}>
                   <button
                     onClick={() => goTo(surah.number)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-all ${
-                      i === selected ? 'bg-primary/10' : 'hover:bg-white/5'
+                    className={`group w-full flex items-center gap-3 px-4 py-3 text-left transition-all ${
+                      i === selected ? 'bg-primary/10' : 'hover:bg-white/[0.03]'
                     }`}
                   >
-                    <div className="w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0">
+                    <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
                       <span className="text-primary text-xs font-bold">{surah.number}</span>
                     </div>
                     <div className="flex-1 min-w-0">

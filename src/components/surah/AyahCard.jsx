@@ -38,7 +38,7 @@ export default function AyahCard({ ayah, surahNumber, surahName, onTafsirOpen, a
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       className={`glass-card rounded-2xl overflow-hidden transition-all duration-300 ${
-        isCurrentlyPlaying ? 'border-primary/40 shadow-[0_0_20px_rgba(222,166,155,0.12)]' : ''
+        isCurrentlyPlaying ? 'border-primary/40 shadow-[0_0_30px_rgba(222,166,155,0.12)]' : 'hover:border-white/12'
       }`}
     >
       <div className="p-5 sm:p-7">
@@ -83,7 +83,7 @@ export default function AyahCard({ ayah, surahNumber, surahName, onTafsirOpen, a
         </p>
 
         {/* English translation */}
-        <p className="text-white/65 text-sm leading-relaxed font-sans">
+        <p className="text-white/60 text-sm leading-relaxed font-sans">
           {ayah.english}
         </p>
       </div>
@@ -96,13 +96,13 @@ export default function AyahCard({ ayah, surahNumber, surahName, onTafsirOpen, a
       </AnimatePresence>
 
       {/* Action bar */}
-      <div className="px-5 sm:px-7 py-3 border-t border-white/6 flex items-center gap-2">
+      <div className="px-5 sm:px-7 py-3 border-t border-white/[0.05] flex items-center gap-2">
         <button
           onClick={handlePlayPause}
           className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
             isCurrentlyPlaying
-              ? 'bg-primary/20 text-primary'
-              : 'bg-white/8 text-white/60 hover:bg-white/12 hover:text-white'
+              ? 'bg-primary/15 text-primary border border-primary/20'
+              : 'bg-white/[0.06] text-white/60 hover:bg-white/10 hover:text-white border border-transparent'
           }`}
         >
           {isCurrentlyPlaying ? <Pause size={12} /> : <Play size={12} fill="currentColor" />}
@@ -113,8 +113,8 @@ export default function AyahCard({ ayah, surahNumber, surahName, onTafsirOpen, a
           onClick={() => onTafsirOpen(`${surahNumber}_${ayah.number}`)}
           className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
             isTafsirOpen
-              ? 'bg-accent/20 text-accent'
-              : 'bg-white/8 text-white/60 hover:bg-white/12 hover:text-white'
+              ? 'bg-accent/15 text-accent border border-accent/20'
+              : 'bg-white/[0.06] text-white/60 hover:bg-white/10 hover:text-white border border-transparent'
           }`}
         >
           <BookOpen size={12} />
@@ -124,7 +124,7 @@ export default function AyahCard({ ayah, surahNumber, surahName, onTafsirOpen, a
         <div className="ml-auto flex items-center gap-1.5">
           <button
             onClick={handleShare}
-            className="w-7 h-7 rounded-lg bg-white/8 hover:bg-white/12 flex items-center justify-center text-white/50 hover:text-white transition-all"
+            className="w-8 h-8 rounded-lg bg-white/[0.06] hover:bg-white/10 flex items-center justify-center text-white/50 hover:text-white transition-all border border-transparent hover:border-white/10"
             title="Share verse"
           >
             <Share2 size={12} />
@@ -133,10 +133,10 @@ export default function AyahCard({ ayah, surahNumber, surahName, onTafsirOpen, a
             onClick={() =>
               favorites.toggleFavorite(surahNumber, ayah.number, ayah.arabic, ayah.english, surahName)
             }
-            className={`w-7 h-7 rounded-lg flex items-center justify-center transition-all ${
+            className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all border ${
               isFav
-                ? 'bg-primary/20 text-primary'
-                : 'bg-white/8 text-white/50 hover:text-white hover:bg-white/12'
+                ? 'bg-primary/15 text-primary border-primary/20'
+                : 'bg-white/[0.06] text-white/50 hover:text-white border-transparent hover:border-white/10'
             }`}
             title={isFav ? 'Remove from favorites' : 'Add to favorites'}
           >

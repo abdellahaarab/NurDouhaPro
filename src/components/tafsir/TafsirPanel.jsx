@@ -16,12 +16,15 @@ export default function TafsirPanel({ surah, ayah, onClose }) {
       initial={{ opacity: 0, height: 0 }}
       animate={{ opacity: 1, height: 'auto' }}
       exit={{ opacity: 0, height: 0 }}
-      className="border-t border-accent/20 bg-accent/5 overflow-hidden"
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className="border-t border-accent/20 bg-accent/[0.04] overflow-hidden"
     >
-      <div className="p-5">
-        <div className="flex items-center justify-between mb-3">
+      <div className="p-5 sm:p-6">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <BookOpen size={14} className="text-accent" />
+            <div className="w-8 h-8 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
+              <BookOpen size={14} className="text-accent" />
+            </div>
             <span className="text-accent text-sm font-semibold">Tafsir</span>
             <span className="text-white/40 text-xs">
               {surah}:{ayah}
@@ -29,9 +32,9 @@ export default function TafsirPanel({ surah, ayah, onClose }) {
           </div>
           <button
             onClick={onClose}
-            className="w-6 h-6 rounded-full bg-white/8 hover:bg-white/15 flex items-center justify-center text-white/50 hover:text-white transition-all"
+            className="w-7 h-7 rounded-full bg-white/8 hover:bg-white/15 flex items-center justify-center text-white/50 hover:text-white transition-all"
           >
-            <X size={11} />
+            <X size={12} />
           </button>
         </div>
 
@@ -53,7 +56,7 @@ export default function TafsirPanel({ surah, ayah, onClose }) {
                 {tafsir.arabic}
               </p>
             )}
-            <p className="text-white/70 text-sm leading-relaxed">
+            <p className="text-white/65 text-sm leading-relaxed">
               {tafsir.tafsir || tafsir.english || 'No tafsir text available for this verse.'}
             </p>
           </div>

@@ -2,10 +2,10 @@ export function SkeletonCard() {
   return (
     <div className="glass-card rounded-2xl p-5 animate-pulse">
       <div className="flex items-center justify-between mb-3">
-        <div className="w-8 h-8 rounded-full bg-white/10" />
+        <div className="w-9 h-9 rounded-xl bg-white/10" />
         <div className="w-16 h-4 rounded bg-white/10" />
       </div>
-      <div className="h-5 w-2/3 rounded bg-white/10 mb-2" />
+      <div className="h-6 w-2/3 rounded bg-white/10 mb-2 ml-auto" />
       <div className="h-3 w-1/2 rounded bg-white/8" />
     </div>
   );
@@ -14,8 +14,12 @@ export function SkeletonCard() {
 export function SkeletonAyah() {
   return (
     <div className="glass-card rounded-2xl p-6 mb-4 animate-pulse">
+      <div className="flex justify-between mb-6">
+        <div className="w-8 h-8 rounded-full bg-white/10" />
+        <div className="w-12 h-4 rounded bg-white/10" />
+      </div>
       <div className="flex justify-end mb-6">
-        <div className="w-3/4 h-8 rounded bg-white/10" />
+        <div className="w-3/4 h-10 rounded bg-white/10" />
       </div>
       <div className="space-y-2 mb-4">
         <div className="h-4 w-full rounded bg-white/8" />
