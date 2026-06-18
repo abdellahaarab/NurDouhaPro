@@ -5,7 +5,7 @@
 ---
 # 🎥 Preview
 
-[![Watch the Video](https://pro.nurdouha.site/og-cover.png)](https://youtu.be/...)
+[![Watch the Video](https://raw.githubusercontent.com/abdellahaarab/NurDouhaPro/refs/heads/main/og-cover.png)](https://youtu.be/...)
 
 
 ---
