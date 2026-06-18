@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #DEA69B;
+    --accent:  #B9F0A3;
+    --dark:    #0B0B0F;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #0B0B0F;
+    color: #fff;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-white/[0.04] border border-white/[0.08] backdrop-blur-sm;
+  }
+
+  /* Arabic text utility */
+  .arabic-text {
+    font-family: 'Noto Naskh Arabic', 'Amiri', serif;
+    direction: rtl;
+    text-align: right;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent;
+  }
+
+  .gradient-text-accent {
+    @apply bg-gradient-to-r from-accent to-accent/60 bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .bg-dark { background-color: #0B0B0F; }
+
+  /* Playing wave animation */
+  @keyframes wave {
+    0%, 100% { height: 4px; }
+    50%       { height: 16px; }
+  }
+  .animate-wave {
+    animation: wave 0.8s ease-in-out infinite;
+  }
+
+  /* Smooth focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dark;
+  }
+}
+
+/* Arabic font performance */
+@font-face {
+  font-display: swap;
+}
