@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
   Play, Pause, SkipBack, SkipForward, Repeat, Zap, X, Volume2,
@@ -9,32 +10,48 @@ import { getSurahByNumber } from '../../utils/surahs';
 export default function AudioPlayer() {
   const { audio } = useApp();
   const surahMeta = getSurahByNumber(audio.surah);
+  const progressRef = useRef(null);
 
   const progressPct = audio.duration > 0
     ? (audio.currentTime / audio.duration) * 100
     : 0;
 
   const handleSeek = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const ratio = (e.clientX - rect.left) / rect.width;
+    if (!progressRef.current) return;
+    const rect = progressRef.current.getBoundingClientRect();
+    const ratio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
     audio.seek(ratio * audio.duration);
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-4">
-      <div className="rounded-2xl border border-white/10 bg-dark-100/95 backdrop-blur-xl shadow-2xl overflow-hidden">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-5">
+      <motion.div
+        layout
+        className="rounded-2xl border border-white/10 bg-dark-100/90 backdrop-blur-2xl shadow-2xl overflow-hidden"
+      >
         {/* Progress bar */}
         <div
-          className="h-1 bg-white/10 cursor-pointer group relative"
+          ref={progressRef}
+          className="h-1.5 bg-white/5 cursor-pointer group relative"
           onClick={handleSeek}
         >
           <motion.div
-            className="h-full bg-gradient-to-r from-primary to-primary/70 relative"
+            className="h-full bg-gradient-to-r from-primary to-primary/60 relative"
             style={{ width: `${progressPct}%` }}
             transition={{ duration: 0.1 }}
           >
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-primary shadow-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-primary shadow-lg opacity-0 group-hover:opacity-100 transition-opacity scale-0 group-hover:scale-100" />
           </motion.div>
+          {/* Waveform decoration */}
+          <div className="absolute inset-0 flex items-center justify-center gap-[3px] opacity-10 pointer-events-none">
+            {[...Array(40)].map((_, i) => (
+              <div
+                key={i}
+                className="w-0.5 bg-white/40 rounded-full"
+                style={{ height: `${Math.random() * 60 + 20}%` }}
+              />
+            ))}
+          </div>
         </div>
 
         <div className="flex items-center gap-4 px-4 py-3">
@@ -55,7 +72,7 @@ export default function AudioPlayer() {
           <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
             <button
               onClick={() => audio.previous()}
-              className="w-8 h-8 rounded-full bg-white/8 hover:bg-white/15 flex items-center justify-center text-white/70 hover:text-white transition-all"
+              className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 flex items-center justify-center text-white/60 hover:text-white transition-all"
             >
               <SkipBack size={14} fill="currentColor" />
             </button>
@@ -63,20 +80,20 @@ export default function AudioPlayer() {
             <button
               onClick={audio.togglePlay}
               disabled={audio.isLoading}
-              className="w-10 h-10 rounded-full bg-primary hover:bg-primary/80 flex items-center justify-center text-dark transition-all shadow-[0_0_15px_rgba(222,166,155,0.4)] hover:shadow-[0_0_25px_rgba(222,166,155,0.6)] disabled:opacity-60"
+              className="w-11 h-11 rounded-full bg-primary hover:bg-primary/90 flex items-center justify-center text-dark transition-all shadow-glow-primary disabled:opacity-60"
             >
               {audio.isLoading ? (
                 <div className="w-4 h-4 border-2 border-dark/30 border-t-dark rounded-full animate-spin" />
               ) : audio.isPlaying ? (
-                <Pause size={16} fill="currentColor" />
+                <Pause size={17} fill="currentColor" />
               ) : (
-                <Play size={16} fill="currentColor" />
+                <Play size={17} fill="currentColor" />
               )}
             </button>
 
             <button
               onClick={() => audio.next()}
-              className="w-8 h-8 rounded-full bg-white/8 hover:bg-white/15 flex items-center justify-center text-white/70 hover:text-white transition-all"
+              className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 flex items-center justify-center text-white/60 hover:text-white transition-all"
             >
               <SkipForward size={14} fill="currentColor" />
             </button>
@@ -86,10 +103,10 @@ export default function AudioPlayer() {
           <div className="hidden sm:flex items-center gap-1 flex-shrink-0">
             <button
               onClick={() => audio.setIsLooping((v) => !v)}
-              className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+              className={`w-9 h-9 rounded-full flex items-center justify-center transition-all border ${
                 audio.isLooping
-                  ? 'bg-accent/20 text-accent'
-                  : 'bg-white/8 text-white/50 hover:text-white hover:bg-white/12'
+                  ? 'bg-accent/15 text-accent border-accent/30'
+                  : 'bg-white/5 text-white/50 hover:text-white border-white/5 hover:border-white/10'
               }`}
               title="Loop ayah"
             >
@@ -98,10 +115,10 @@ export default function AudioPlayer() {
 
             <button
               onClick={() => audio.setAutoNext((v) => !v)}
-              className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+              className={`w-9 h-9 rounded-full flex items-center justify-center transition-all border ${
                 audio.autoNext
-                  ? 'bg-primary/20 text-primary'
-                  : 'bg-white/8 text-white/50 hover:text-white hover:bg-white/12'
+                  ? 'bg-primary/15 text-primary border-primary/30'
+                  : 'bg-white/5 text-white/50 hover:text-white border-white/5 hover:border-white/10'
               }`}
               title="Auto-play next"
             >
@@ -119,13 +136,13 @@ export default function AudioPlayer() {
           {/* Stop */}
           <button
             onClick={audio.stop}
-            className="w-7 h-7 rounded-full bg-white/8 hover:bg-red-500/20 flex items-center justify-center text-white/40 hover:text-red-400 transition-all flex-shrink-0"
+            className="w-8 h-8 rounded-full bg-white/5 hover:bg-red-500/15 border border-white/5 hover:border-red-500/20 flex items-center justify-center text-white/40 hover:text-red-400 transition-all flex-shrink-0"
             title="Stop"
           >
             <X size={13} />
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

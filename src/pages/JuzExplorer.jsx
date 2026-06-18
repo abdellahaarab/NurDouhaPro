@@ -42,17 +42,21 @@ export default function JuzExplorer() {
       className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
     >
       {/* Header */}
-      <div className="mb-10">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center">
-            <Layers size={18} className="text-accent" />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-10"
+      >
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+          <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center">
+            <Layers size={22} className="text-accent" />
           </div>
           <div>
-            <h1 className="font-display text-2xl font-bold text-white">Juz Explorer</h1>
+            <h1 className="font-display text-2xl sm:text-3xl font-bold text-white">Juz Explorer</h1>
             <p className="text-white/45 text-sm">30 sections of the Holy Quran</p>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {error && <ErrorState message={error} />}
 
