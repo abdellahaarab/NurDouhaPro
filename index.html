@@ -1,19 +1,84 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
   <head>
+    <!-- ===================== BASIC SEO ===================== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Al-Quran Pro — A premium digital Quran experience with audio, tafsir, and translation." />
-    <title>Al-Quran Pro — Sacred Digital Experience</title>
+
+    <title>Al-Quran Pro — Sacred Digital Experience | Listen, Read & Reflect</title>
+
+    <meta name="description" content="Al-Quran Pro is a premium digital Quran experience with beautiful Arabic text, audio recitation, tafsir, and English translation. Listen to the Holy Quran online with a modern spiritual UI." />
+
+    <meta name="keywords" content="Quran, Al Quran, Quran audio, Islamic app, tafsir, Arabic Quran, Quran translation, listen Quran online, Islamic web app, Quran reader, Surah audio, Quran verses, Islam digital Quran" />
+
+    <meta name="author" content="Abdellah Aarab" />
+
+    <!-- ===================== CANONICAL ===================== -->
+    <link rel="canonical" href="https://pro.nurdouha.site" />
+
+    <!-- ===================== OPEN GRAPH (FACEBOOK / WHATSAPP) ===================== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Al-Quran Pro — Sacred Digital Experience" />
+    <meta property="og:description" content="Listen, read, and reflect on the Holy Quran with premium audio, tafsir, and translation experience." />
+    <meta property="og:url" content="https://pro.nurdouha.site" />
+    <meta property="og:image" content="https://pro.nurdouha.site/og-cover.png" />
+    <meta property="og:site_name" content="Al-Quran Pro" />
+
+    <!-- ===================== TWITTER CARD ===================== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Al-Quran Pro — Sacred Digital Experience" />
+    <meta name="twitter:description" content="Premium Quran web app with audio recitation, tafsir, and translations." />
+    <meta name="twitter:image" content="https://pro.nurdouha.site/og-cover.png" />
+
+    <!-- ===================== FAVICON ===================== -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- ===================== PERFORMANCE OPTIMIZATION ===================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- ===================== FONTS ===================== -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Naskh+Arabic:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- ===================== THEME ===================== -->
+    <meta name="theme-color" content="#DEA69B" />
+    <meta name="msapplication-TileColor" content="#DEA69B" />
+
+    <!-- ===================== PWA SUPPORT ===================== -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- ===================== STRUCTURED DATA (SEO RICH RESULTS) ===================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Al-Quran Pro",
+      "url": "https://pro.nurdouha.site",
+      "description": "Premium digital Quran application with audio recitation, tafsir, and translations.",
+      "applicationCategory": "ReligiousApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Abdellah Aarab"
+      }
+    }
+    </script>
+
   </head>
+
   <body>
+    <!-- ===================== APP ROOT ===================== -->
     <div id="root"></div>
+
+    <!-- ===================== REACT ENTRY ===================== -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,0 +1,50 @@
+{
+  "short_name": "Quran Pro",
+  "name": "Al-Quran Pro — Sacred Digital Experience",
+  "description": "Premium digital Quran experience with beautiful Arabic text, audio recitation, tafsir, and English translation.",
+  "id": "/?source=pwa",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "categories": [
+    "books",
+    "education",
+    "utilities"
+  ],
+  "background_color": "#121212",
+  "theme_color": "#DEA69B",
+  "dir": "ltr",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
