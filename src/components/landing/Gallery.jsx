@@ -1,10 +1,24 @@
 import { motion } from 'framer-motion';
+
 import SacredArchitecture from '../../assets/Sacred_Architecture.png';
+
 import IslamicCalligraphy from '../../assets/Islamic_Calligraphy.png';
+import IslamicCalligraphyAlt from '../../assets/Islamic__Calligraphy.png';
+import IslamicCalligraphy1 from '../../assets/Islamic_Calligraphy_1.png';
+
 import QuranPages from '../../assets/Quran_Pages.png';
+import QuranPagesAlt from '../../assets/Quran__Pages.png';
+
 import MosqueInterior from '../../assets/Mosque_Interior.png';
+import MosqueInteriorAlt from '../../assets/Mosque__Interior.png';
+
 import GeometricPatterns from '../../assets/Geometric_Patterns.png';
+import GeometricPatternsAlt from '../../assets/Geometric__Patterns.png';
+
 import PrayerHall from '../../assets/Prayer_Hall.png';
+import PrayerHallAlt from '../../assets/Prayer__Hall.png';
+import Prayer from '../../assets/Prayer.png';
+
 
 const IMAGES = [
   {
@@ -36,7 +50,22 @@ const IMAGES = [
     src: PrayerHall,
     title: 'Prayer Hall',
     span: 'col-span-1 row-span-1',
-  }
+  },
+  {
+    src: MosqueInteriorAlt,
+    title: 'Mosque Interior',
+    span: 'col-span-1 row-span-2',
+  },
+  {
+    src: QuranPagesAlt,
+    title: 'Quran Pages',
+    span: 'col-span-1 row-span-1',
+  },
+  {
+    src: PrayerHallAlt,
+    title: 'Prayer Hall',
+    span: 'col-span-1 row-span-1',
+  },
 ];
 
 export default function Gallery() {
